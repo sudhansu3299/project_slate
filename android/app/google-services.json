@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "430350743123",
+    "firebase_url": "https://fir-database-34067.firebaseio.com",
+    "project_id": "fir-database-34067",
+    "storage_bucket": "fir-database-34067.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430350743123:android:59f99d74881d8b24ca38a6",
+        "android_client_info": {
+          "package_name": "com.sudha.firebase_database_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430350743123-6alh19dc730fb75tetr6qm7uds8m1j4o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoruXkodyb3jd9JDWHvCW4AVHSEqCjyFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430350743123-6alh19dc730fb75tetr6qm7uds8m1j4o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

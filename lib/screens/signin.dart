@@ -1,6 +1,7 @@
 import 'package:firebase_database_project/api/tutor_api.dart';
 import 'package:firebase_database_project/model/user.dart';
 import 'package:firebase_database_project/notifier/auth_notifier.dart';
+import 'package:firebase_database_project/screens/forgot_password.dart';
 import 'package:firebase_database_project/screens/screen_util.dart';
 import 'package:firebase_database_project/ui/login_component.dart';
 import 'package:flutter/material.dart';
@@ -171,7 +172,7 @@ class _LoginState extends State<Login> {
                             color: Colors.grey),
                     ),
                     style: TextStyle(fontSize: 26),
-                    obscureText: true,
+                    obscureText: _obscureText,
                     controller: _passwordController,
                     validator: (String value){
                         if(value.isEmpty){
@@ -283,7 +284,16 @@ class _LoginState extends State<Login> {
                                             _authMode == AuthMode.Login ? 'Login' : 'Signup',
                                             style:  TextStyle(fontSize: 20),
                                         ),
-                                    )
+                                    ),
+                                    SizedBox(height: 16,),
+                                    _authMode == AuthMode.Login? InkWell(
+                                        child: Text('Forgot Password? Click here',
+                                            style: TextStyle(color: Colors.blue[600],fontSize: 18.0,fontWeight: FontWeight.w600,decoration: TextDecoration.underline),
+                                        ),
+                                        onTap: (){
+                                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgotPassword()));
+                                        },
+                                    ):Container(),
                                 ],
                             ),
                         ),

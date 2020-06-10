@@ -2,14 +2,17 @@ import 'package:firebase_database_project/api/tutor_api.dart';
 import 'package:firebase_database_project/drawer_pages/bookmarks.dart';
 import 'package:firebase_database_project/drawer_pages/contact_us.dart';
 import 'package:firebase_database_project/drawer_pages/feed_back.dart';
+import 'package:firebase_database_project/drawer_pages/settings.dart';
 import 'package:firebase_database_project/notifier/auth_notifier.dart';
 import 'package:firebase_database_project/notifier/tutor_notifier.dart';
 import 'package:firebase_database_project/screens/detail.dart';
+import 'package:firebase_database_project/screens/filter_elements.dart';
 import 'package:firebase_database_project/screens/screen_util.dart';
 import 'package:firebase_database_project/screens/tutor_form.dart';
 import 'package:firebase_database_project/ui/login_component.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:filter_list/filter_list.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Feed extends StatefulWidget {
@@ -36,6 +39,36 @@ class _FeedState extends State<Feed> {
 
       print('Building Feed');
       print('No of food items: ${tutorNotifier.tutorList.length}');
+
+      List<String> filterElements = [
+          "ICSE",
+          "CBSE",
+          "Maths",
+          "Science",
+          "English"
+      ];
+
+      List<String> selectedList =[
+
+      ];
+
+      void _openFilterList() async {
+          var list = await FilterList.showFilterList(
+              context,
+              allTextList: filterElements,
+              height: 450,
+              borderRadius: 20,
+              headlineText: "Select Topic/Board",
+              searchFieldHintText: "Search Here",
+              selectedTextList: selectedList,
+          );
+
+          if (list != null) {
+              setState(() {
+                  selectedList = List.from(list);
+              });
+          }
+      }
 
       return Scaffold(
           drawer: Drawer(
@@ -117,6 +150,19 @@ class _FeedState extends State<Feed> {
 
                           onTap: ()=>signout(authNotifier),
 
+                      ),ListTile(
+                          title: Row(
+                              children: <Widget>[
+                                  Icon(Icons.settings),
+                                  Padding(padding: EdgeInsets.only(left:Constant.sizeSmall)),
+                                  Text('Settings',style: TextStyle(fontSize: 20.0),),
+                              ],
+                          ),
+
+                          onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Settings()));
+                          }
+
                       ),
                   ],
               ),
@@ -135,7 +181,7 @@ class _FeedState extends State<Feed> {
                         splashColor: Colors.blue,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
                         color: Colors.white,
-                        onPressed: (){},
+                        onPressed: _openFilterList,
                         child: Text('F i l t e r',
                             style: TextStyle(fontSize: 20,color:Colors.black,fontFamily: 'Futura'),
                         ),
@@ -164,15 +210,29 @@ class _FeedState extends State<Feed> {
                            ));*/
                               Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>FoodDetail()));
                           },
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(80.0),
+                          /*child: ClipRRect(
+                              borderRadius: BorderRadius.circular(80.0),*/
                             child: Container(
                                 //decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(150.0))),
-                                margin: EdgeInsets.only(left: Constant.sizeLarge,right: Constant.sizeLarge,top: index==0?Constant.sizeMedium:0),
-                                //width: MediaQuery.of(context).size.width*0.7,
+                                //margin: EdgeInsets.only(left: Constant.sizeLarge,right: Constant.sizeLarge,top: index==0?Constant.sizeMedium:0),
+                                width: MediaQuery.of(context).size.width*0.75,
+                                padding:EdgeInsets.symmetric(horizontal: 10.0,vertical: 5.0),
                                 height: MediaQuery.of(context).size.height*0.547,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  border: Border.all(width: 0.0),
+                                  boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black45,
+                                          blurRadius: 3.0,
+                                          spreadRadius: 1.0,
+                                          offset: Offset(8.0, 3.0)
+                                      ),
+                                  ],
+                              ),
                               child: Card
                                   (   elevation: 15.0,
+                                      clipBehavior: Clip.hardEdge,
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
                                       child: new Stack
                                           (
@@ -231,7 +291,7 @@ class _FeedState extends State<Feed> {
 
                               ),
                             ),
-                          ),
+                          //),
                       );
                   },
               ),
@@ -283,5 +343,7 @@ class _FeedState extends State<Feed> {
               foregroundColor: Colors.white,
           ),*//////////// TO ADD NEW TUTORS
     );
+
   }
+
 }

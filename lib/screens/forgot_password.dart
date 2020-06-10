@@ -25,7 +25,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           child: ListView(
               children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left:Constant.screenWidthTenth,right: Constant.screenWidthTenth),
+                      padding: EdgeInsets.only(left: 10.0,right: 10.0),
                     child: TextFormField(
                         decoration: InputDecoration(
                             labelText: 'Email',
@@ -64,7 +64,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           setState(() {
               print('link sent to mail');
               _warning = "A password reset link has been sent to $_email";
-              alert();
+              Alert();
           });
       }catch(e){
           print(e.message);
@@ -113,3 +113,42 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       );
   }
 }
+
+class Alert extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+      return Scaffold(
+          body: Container(
+              color: Colors.amber,
+              width: double.infinity,
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                  children: <Widget>[
+                      Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Icon(Icons.error_outline),
+                      ),
+                      /*Expanded(
+                          child: AutoSizeText(
+                              _warning,
+                              maxLines: 3,
+                          ),
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: IconButton(
+                              icon: Icon(Icons.close),
+                              onPressed: () {
+                                  setState(() {
+                                      _warning = null;
+                                  });
+                              },
+                          ),
+                      )*/
+                  ],
+              ),
+          ),
+      );
+  }
+}
+

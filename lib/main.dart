@@ -2,8 +2,10 @@
 import 'package:firebase_database_project/notifier/auth_notifier.dart';
 import 'package:firebase_database_project/notifier/tutor_notifier.dart';
 import 'package:firebase_database_project/screens/feed.dart';
-import 'package:firebase_database_project/screens/login.dart';
+import 'package:firebase_database_project/screens/signin.dart';
+import 'package:firebase_database_project/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
 void main()=>runApp(
@@ -12,7 +14,7 @@ void main()=>runApp(
         ChangeNotifierProvider(
             builder:(context)=>AuthNotifier()),
           ChangeNotifierProvider(
-              builder:(context)=>TutorNotifier())
+              builder:(context)=>TutorNotifier()),
 
       ],
       child: MyApp(),

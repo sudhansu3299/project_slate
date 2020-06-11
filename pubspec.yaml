@@ -32,6 +32,8 @@ dependencies:
   auto_size_text: ^2.1.0
   google_fonts: ^0.3.7
   filter_list:
+  font_awesome_flutter: ^8.8.1
+  url_launcher:
 
 
   # The following adds the Cupertino Icons font to your application.

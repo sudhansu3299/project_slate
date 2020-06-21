@@ -25,24 +25,25 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
       Constant.setScreenAwareConstant(context);
 
-    return SafeArea(
-      child: Scaffold(
-          body: Stack(
-              children: <Widget>[
-                  BackgroundImageWidget(
-                      color: Colors.white,
-                  ),
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                          Center(
-                              child: AppLogoWidget() ,
-                          )
-                      ],
-                  )
-              ],
-          ),
-      ),
-    );
+    // return SafeArea(
+    //   child: Scaffold(
+    //       body: Stack(
+    //           children: <Widget>[
+    //               BackgroundImageWidget(
+    //                   color: Colors.white,
+    //               ),
+    //               Column(
+    //                   mainAxisAlignment: MainAxisAlignment.center,
+    //                   children: <Widget>[
+    //                       Center(
+    //                           child: AppLogoWidget() ,
+    //                       )
+    //                   ],
+    //               )
+    //           ],
+    //       ),
+    //   ),
+    // );
+    
   }
 }

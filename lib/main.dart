@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:firebase_database_project/notifier/auth_notifier.dart';
 import 'package:firebase_database_project/notifier/tutor_notifier.dart';
 import 'package:firebase_database_project/screens/feed.dart';
@@ -8,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
-void main()=>runApp(
+void main(){
+ runApp(
   MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -19,7 +22,8 @@ void main()=>runApp(
       ],
       child: MyApp(),
   )
-);
+  );
+}
 
 class MyApp extends StatelessWidget {
   @override
